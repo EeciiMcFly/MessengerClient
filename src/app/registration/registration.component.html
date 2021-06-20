@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="bigform">
+	<div class="form">
+		<h2>Регистрация</h2>
+
+		<div>
+			<div class="form-group">
+				<label>Введите Логин</label><br/>
+				<input [(ngModel)]="login" type="text" class="form_input" placeholder="Логин"/>
+			</div>
+			<div class="form-group">
+				<label>Введите пароль</label><br/>
+				<input [(ngModel)]="password" class="form_input" placeholder="Введите пароль"/>
+			</div>
+			<div class="form-group">
+				<label >Повторите пароль</label><br/>
+				<input [(ngModel)]="confirmPassword" class="form_input" placeholder="Введите пароль"/>
+			</div>
+			<div>
+				<input type="submit" value="Регистрация" class="form_button"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

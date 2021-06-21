@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { LoginService } from "../login.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'login',
@@ -8,8 +10,12 @@ import { Component} from '@angular/core';
 export class LoginComponent{
   private _name: string;
   private _password: string;
+  public _hasLoginError: boolean = false;
+  public _hasPasswordError: boolean = false;
+  public _loginErrorText: string = "";
+  public _passwordErrorText: string = "";
   
-  constructor() {
+  constructor(private loginService: LoginService, private router: Router) {
     this._name = "";
     this._password = "";
   }
@@ -19,6 +25,7 @@ export class LoginComponent{
   }
 
   set name(value) {
+    this._hasLoginError = false;
     this._name = value;
   }
 
@@ -27,6 +34,36 @@ export class LoginComponent{
   }
 
   set password(value) {
+    this._hasPasswordError = false;
     this._password = value;
+  }
+  
+  async login() {
+    if (this._name.length == 0) {
+      this._hasLoginError = true;
+      this._loginErrorText = "Значение не задано";
+      
+      return;
+    }
+
+    if (this._password.length == 0) {
+      this._hasPasswordError = true;
+      this._passwordErrorText = "Значение не задано";
+      
+      return;
+    }
+
+    let user = await this.loginService.tryLogin(this._name, this._password);
+    console.log(user);
+    if (user != null)
+    {
+      this.router.navigate(["/dialogs"])
+    }
+    else 
+    {
+      this._hasLoginError = true;
+      this._loginErrorText = "Неверные данные авторизации";
+    }
+    
   }
 }

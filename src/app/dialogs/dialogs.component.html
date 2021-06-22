@@ -1,1 +1,45 @@
-<p>dialogs works!</p>
+<!DOCTYPE html>
+<html>
+<body>
+<div class="bigform">
+	<div class="form">
+		<div class="profileform">
+			<img src="https://as2.ftcdn.net/v2/jpg/03/32/59/65/1000_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg" alt="avatar">
+			<label class="loginLabel">{{login}} </label>
+			<div class="form-group">
+				<button class="form_button" (click)="logOut()">Выйти</button>
+			</div>
+		</div>
+		<div class="people-list">
+			<ul class="list-unstyled chat-list mt-2 mb-0">
+				<div  *ngFor="let dialog of dialogs">
+					<div class="clearfix" (click)="goToDialog(dialog.dialogId, dialog.personName)">
+						<img src="https://as2.ftcdn.net/v2/jpg/03/32/59/65/1000_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg" alt="avatar">
+						<div class="about">
+							<div class="name">{{dialog.personName}}</div>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</div>
+		
+		<div>
+			<input [(ngModel)]="searhName" class="form_input" placeholder="Найти пользователя">
+			<button (click)="searchUser()">Найти</button>
+		</div>
+		<div class="people-list">
+			<ul class="list-unstyled chat-list mt-2 mb-0">
+				<div *ngFor="let user of users">
+					<div class="clearfix" (click)="createDialog(user.userId, user.login)">
+						<img src="https://as2.ftcdn.net/v2/jpg/03/32/59/65/1000_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg" alt="avatar">
+						<div class="about">
+							<div class="name">{{user.login}}</div>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

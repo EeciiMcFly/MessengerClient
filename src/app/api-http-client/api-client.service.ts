@@ -20,6 +20,7 @@ export class ApiClient {
 			throw error;
 		}
 	}
+	
 
 	public async post<T>(path: string, body: any, credentials: Credentials): Promise<T> {
 		const requestOptions = HttpClientExtensions.createRequestOptions(credentials, "json");

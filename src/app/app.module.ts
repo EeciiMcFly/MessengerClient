@@ -7,14 +7,20 @@ import { RouterModule, Routes } from "@angular/router";
 import { RegistrationComponent } from './registration/registration.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
 import { HttpClientModule } from "@angular/common/http";
-import { RegisterService } from "./register.service";
 import { ApiClient } from "./api-http-client/api-client.service";
-import { LoginService } from "./login.service";
+import { RegisterService } from "./services/register.service";
+import { LoginService } from "./services/login.service";
+import { UserService } from "./services/user.service";
+import { DialogService } from "./services/dialog.service";
+import { MessageService } from "./services/message.service";;
+import { MessageComponent } from './message/message.component'
 
 const appRoutes: Routes =[
 	{ path: 'registration', component: RegistrationComponent},
 	{ path: 'login', component: LoginComponent},
-	{ path: 'dialogs', component: DialogsComponent}
+	{ path: 'dialogs', component: DialogsComponent},
+	{ path: 'messages', component: MessageComponent},
+	{ path: '**', redirectTo: "/login"}
 ];
 
 @NgModule({
@@ -30,13 +36,17 @@ const appRoutes: Routes =[
 		AppComponent , 
 		LoginComponent, 
 		RegistrationComponent, 
-		DialogsComponent,
+		DialogsComponent, 
+		MessageComponent
 		],
 	bootstrap:    [ AppComponent ],
 	providers: [
 		RegisterService,
 		ApiClient,
-		LoginService
+		LoginService,
+		UserService,
+		DialogService,
+		MessageService
 	]
 })
 export class AppModule { }

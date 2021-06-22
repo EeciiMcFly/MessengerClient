@@ -1,9 +1,9 @@
 ﻿export class UserDTO{
-	public userName: string;
-	public password: string;
+	public userId: string;
+	public login: string;
 	
 	constructor(userName: string, password: string) {
-		this.userName = userName;
-		this.password = password;
+		this.userId = userName;
+		this.login = password;
 	}
 }

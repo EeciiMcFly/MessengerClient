@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
-import { LoginService } from "../login.service";
 import { Router } from "@angular/router";
+import { LoginService } from "../services/login.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: 'login',
@@ -15,7 +16,7 @@ export class LoginComponent{
   public _loginErrorText: string = "";
   public _passwordErrorText: string = "";
   
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private userService: UserService) {
     this._name = "";
     this._password = "";
   }
@@ -57,6 +58,7 @@ export class LoginComponent{
     console.log(user);
     if (user != null)
     {
+      this.userService.addUser(user.userId, this._name, this._password);
       this.router.navigate(["/dialogs"])
     }
     else 
@@ -65,5 +67,10 @@ export class LoginComponent{
       this._loginErrorText = "Неверные данные авторизации";
     }
     
+  }
+  
+  moveToRegister()
+  {
+    this.router.navigate(["/registration"])
   }
 }

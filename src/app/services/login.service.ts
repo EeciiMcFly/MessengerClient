@@ -1,7 +1,8 @@
-﻿import { ApiClient } from "./api-http-client/api-client.service";
-import { Injectable } from "@angular/core";
-import { Credentials } from "./dto/credentials";
-import { UserDTO } from "./dto/userDTO";
+﻿import { Injectable } from "@angular/core";
+import { ApiClient } from "../api-http-client/api-client.service";
+import { UserDTO } from "../dto/userDTO";
+import { Credentials } from "../dto/credentials";
+
 
 @Injectable()
 export class LoginService{

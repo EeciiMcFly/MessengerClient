@@ -3,7 +3,7 @@ import { RegisterResult } from "../dto/RegisterResult";
 import { RegistrationStatus } from "../emuns/RegistrationStatus";
 import { Router } from "@angular/router";
 import { RegisterUserRequest } from "../requests/RegisterUserRequest";
-import { RegisterService } from "../register.service";
+import { RegisterService } from "../services/register.service";
 
 @Component({
   selector: 'app-registration',
@@ -90,6 +90,10 @@ export class RegistrationComponent implements OnInit {
     {
       this._router.navigate(["/login"])
     }
+  }
+  
+  moveToSignIn(){
+    this._router.navigate(["/login"])
   }
 
   ngOnInit(): void {

@@ -21,8 +21,12 @@
 				<input [(ngModel)]="confirmPassword" class="form_input" placeholder="Введите пароль"/>
 				<label *ngIf="_hasConfirmPasswordError" class="login-error" [textContent]="_confirmPasswordErrorText"></label>
 			</div>
-			<div>
+			<div class="form-group">
 				<button class="form_button" (click)="tryRegister()">Зарегистрироваться</button>
+			</div>
+
+			<div class="form-group">
+				<button class="form_button" (click)="moveToSignIn()">Войти в приложение</button>
 			</div>
 		</div>
 	</div>
